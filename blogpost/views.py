@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 class BlogList(ListView):
     template_name = 'list.html'
     model = BlogModel
-    paginate_by = 1
+    paginate_by = 5
     
 class BlogDetail(DetailView):
     template_name = 'detail.html'

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/a11y-dark.min.css">
 {% endblock header %}
 
 {% block content %}
@@ -9,12 +10,14 @@
         <div class="card">
             <h5 class="card-header">{{ object.category }}</h5>
             <div class="card-body">
-                <h5 class="card-title">{{ object.title }}</h5>
-                <p class="card-text">{{ object.content }}</p>
+                <h2 class="card-title">{{ object.title }}</h2>
+                {{ object.markdown_to_html|safe }}
                 <a href="{% url 'list' %}" class="btn btn-primary">一覧へ</a>
                 <a href="{% url 'update' object.pk %}" class="btn btn-primary">編集する</a>
                 <a href="{% url 'delete' object.pk %}" class="btn btn-primary">削除する</a>
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 {% endblock content %}
