@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import BlogModel
 from django.urls import reverse_lazy
@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 class BlogList(ListView):
     template_name = 'list.html'
     model = BlogModel
+    paginate_by = 1
     
 class BlogDetail(DetailView):
     template_name = 'detail.html'
@@ -27,3 +28,8 @@ class BlogUpdate(UpdateView):
     model = BlogModel
     fields = ('title', 'content', 'category')
     success_url = reverse_lazy('list')
+    
+
+def redirect_view(request):
+    response = redirect('/list/')
+    return response
