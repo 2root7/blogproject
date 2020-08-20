@@ -26,6 +26,3 @@ class BlogModel(models.Model):
         )
         html = md.convert(self.content)
         return html
-    def overview(self):
-        overview = self.content
-        return overview[:20]
