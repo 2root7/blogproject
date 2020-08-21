@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid bg-gradient-secondary">
   <div class="container">
-    <h1 class="display-4">MyBlog</h1>
-    <p class="lead">記事一覧</p>
+    <h1 class="display-4" style='font-family:fantasy'>MyBlog</h1>
+    <a href='{% url 'create' %}' class='btn btn-outline-primary'>Make Post</a>
   </div>
 </div>
 {% endblock header %}
 
 {% block content %}
     <div class='container'>
-    <a href='{% url 'create' %}' class='btn btn-outline-primary'>新規作成</a>
+    
 
     {% for item in object_list %}
 
-    <div class="card bg-light mb-3">
+    <div class="card bg-gradient-light mb-3">
         
         <div class="card-header">{{ item.postdate}}</div>
         <div class="card-body">

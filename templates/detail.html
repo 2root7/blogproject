@@ -2,10 +2,10 @@
 
 {% block header %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/a11y-dark.min.css">
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron jumbotron-fluid bg-gradient-secondary">
   <div class="container">
-    <h1 class="display-4">MyBlog</h1>
-    <p class="lead">{{object.category}}</p>
+    <h1 class="display-4" style='font-family:fantasy'>MyBlog</h1>
+    <h3 class="lead">{{object.category}}</h3>
   </div>
 </div>
 {% endblock header %}
@@ -14,7 +14,7 @@
 
     <div class='container'>
         <div class="card">
-            <h5 class="card-header">{{ object.title }}</h5>
+            <h2 class="card-header">{{ object.title }}</h2>
             <div class="card-body">
                 {{ object.markdown_to_html|safe }}
 
@@ -26,9 +26,9 @@
         <div class='row'>
             <div class='col'></div>
             <div class='col'>
-                    <a href="{% url 'list' %}" class="btn btn-secondary">一覧へ</a>
+                <a href="{% url 'list' %}" class="btn btn-secondary">一覧へ</a>
                 <a href="{% url 'update' object.pk %}" class="btn btn-secondary">編集する</a>
-                <a href="{% url 'delete' object.pk %}" class="btn btn-infomation">削除する</a>
+                <a href="{% url 'delete' object.pk %}" class="btn btn-warning">削除する</a>
             </div>
             <div class='col'></div>
     </div>

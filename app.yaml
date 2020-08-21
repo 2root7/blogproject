@@ -1,0 +1,6 @@
+runtime: python37
+entrypoint: gunicorn -b :$PORT blogproject.wsgi:application
+
+handlers:
+  - url: .*
+    script: auto

@@ -26,7 +26,9 @@ SECRET_KEY = '6ff4br5susogm$5anbfjqhf+j4e@jbeo3@4#o8=v(d3(tyv!e('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'blog-app-287100.du.r.appspot.com',
+]
 
 
 # Application definition
@@ -75,10 +77,25 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+if os.getenv("GAE_APPLICATION", None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'blogappdb',
+            'USER': 'blogappuser',
+            'PASSWORD': '8jonoheya',
+            'HOST': '/cloudsql/blog-app-287100:asia-northeast3:blogapp',
+        }
+    }
+else:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blogappdb',
+        'USER': 'blogappuser',
+        'PASSWORD': '8jonoheya',
+        'HOST': '127.0.0.1',
+        'PORT': 3306
     }
 }
 
